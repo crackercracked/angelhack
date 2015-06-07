@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/xl81/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient-android/4.3.5.1/eecbb0b998e77629862a13d957d552b3be58fc4e/httpclient-android-4.3.5.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="eecbb0b998e77629862a13d957d552b3be58fc4e">
+        <dex dex="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/pre-dexed/debug/httpclient-android-4.3.5.1-414e812c8a41fcc60b266e85e692e5f588416941.jar" />
+    </item>
+    <item
+        jar="/Users/xl81/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-73fed52ad96ade64bc86b3987ae02a2a3ba6383b.jar" />
+    </item>
+    <item
+        jar="/Users/xl81/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.3/5b0002c5fb66867ca919be0fbd86de1cfaf76da7/httpmime-4.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5b0002c5fb66867ca919be0fbd86de1cfaf76da7">
+        <dex dex="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/pre-dexed/debug/httpmime-4.3-b2f3abdd982e9812ae382b2868a76c88a93f4cf4.jar" />
+    </item>
+    <item
+        jar="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/pre-dexed/debug/classes-299e78127ce90ed8b6f7458cfce870ae85784b8d.jar" />
+    </item>
+    <item
+        jar="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-8947530d623d12de56b0aa86cdcfec33c0f39aa8.jar" />
+    </item>
+    <item
+        jar="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/pre-dexed/debug/classes-cf59bea0931067a44b47211fb6172a700a5943eb.jar" />
+    </item>
+
+</items>
