@@ -22,14 +22,6 @@
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtSearch"
-        android:layout_marginTop="122dp"
-        android:text="Enter Text here"
-        android:layout_below="@+id/btnSearch"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
