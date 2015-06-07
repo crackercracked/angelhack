@@ -16,6 +16,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,14 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        File fileholder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        //File file = new File(fileholder, String.format("%d.jpg", System.currentTimeMillis()));
+        File file = new File(fileholder, "last.jpg");
+        boolean deleted = true;
+        while(!deleted || file.exists()) {
+            deleted = file.delete();
+        }
 
         start = (Button)findViewById(R.id.btn_start);
         start.setOnClickListener(new Button.OnClickListener()
@@ -96,11 +105,32 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
         };
         jpegCallback = new Camera.PictureCallback() {
             public void onPictureTaken(byte[] data, Camera camera) {
+                String[] projection = new String[]{
+                        MediaStore.Images.ImageColumns._ID,
+                        MediaStore.Images.ImageColumns.DATA,
+                        MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+                        MediaStore.Images.ImageColumns.DATE_TAKEN,
+                        MediaStore.Images.ImageColumns.MIME_TYPE
+                };
+                final Cursor cursor = getContentResolver()
+                        .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
+                                null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+
+                // Put it in the image view
+                String filename = "";
+                if (cursor.moveToFirst()) {
+                    final ImageView imageView = (ImageView) findViewById(R.id.image);
+                    filename = cursor.getString(1);
+                }
+                //    URL = imageLocation;
+                File fileholder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                File file = new File(fileholder, "last.jpg");
+                filename = file.getPath();
+                Log.e(tag, "newest filename "+ filename);
                 FileOutputStream outStream = null;
                 try {
-                  //  outStream = new FileOutputStream(String.format(
-                   //         "/sdcard/%d.jpg", System.currentTimeMillis()));
-                    outStream = new FileOutputStream("/sdcard/recent.jpg");
+                    file.createNewFile();
+                    outStream = new FileOutputStream(file);
                     outStream.write(data);
                     outStream.close();
                     Log.d("Log", "onPictureTaken - wrote bytes: " + data.length);
@@ -119,11 +149,17 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
 
     private void captureImage() {
         // TODO Auto-generated method stub
+        if (camera == null) return;
+        ((Button)findViewById(R.id.btn_start)).setText("      Resume      ");
         camera.takePicture(shutterCallback, rawCallback, jpegCallback);
     }
 
     private void start_camera()
     {
+        if (camera != null) {
+            camera.startPreview();
+            return;
+        }
         try{
             camera = Camera.open();
         }catch(RuntimeException e){
@@ -138,8 +174,8 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
         camera.setParameters(param);
         try {
             camera.setPreviewDisplay(surfaceHolder);
+            camera.setDisplayOrientation(90);
             camera.startPreview();
-            //camera.takePicture(shutter, raw, jpeg)
         } catch (Exception e) {
             Log.e(tag, "init_camera: " + e);
             return;
@@ -148,18 +184,16 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
 
     private void stop_camera()
     {
+        ((Button)findViewById(R.id.btn_start)).setText("Start Camera");
+        if (camera == null) return;
         camera.stopPreview();
-        camera.release();
     }
 
     private void analysis()
     {
-
-        String path = getLastImagePath();
-        Intent intent = new Intent(this, SecondActivity.class).putExtra(Intent.EXTRA_TEXT, path);
+        //String path = getLastImagePath();
+        Intent intent = new Intent(this, SecondActivity.class).putExtra(Intent.EXTRA_TEXT, "");
         startActivityForResult(intent, 0);
-        stop_camera();
-
     }
 
     protected File createImageFile() throws IOException {
@@ -219,18 +253,6 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
         return super.onOptionsItemSelected(item);
     }
 
-    private String getLastImagePath(){
-        final String[] imageColumns = { MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA };
-        final String imageOrderBy = MediaStore.Images.Media._ID+" DESC";
-        Cursor imageCursor = managedQuery(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, imageColumns, null, null, imageOrderBy);
-        if(imageCursor.moveToFirst()){
-            String fullPath = imageCursor.getString(imageCursor.getColumnIndex(MediaStore.Images.Media.DATA));
-            imageCursor.close();
-            return fullPath;
-        }else{
-            return "";
-        }
-    }
 
 }
 

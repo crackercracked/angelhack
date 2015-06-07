@@ -165,6 +165,7 @@
     <string name="app_name">NutritionFacts</string>
     <string name="btnTakePicture">button</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_camera">CameraActivity</string>
     <string name="title_activity_display">displayActivity</string>
     <string name="title_activity_post_request">PostRequest</string>
     <string name="title_activity_second">SecondActivity</string>
@@ -172,6 +173,8 @@
     <eat-comment/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:windowActionBar">true</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
     <!-- From: file:/Users/xl81/AndroidStudioProjects/angelhack/angelhack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>

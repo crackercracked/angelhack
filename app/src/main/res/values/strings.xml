@@ -8,5 +8,6 @@
     <string name="title_activity_second">SecondActivity</string>
     <string name="btnTakePicture">button</string>
     <string name="title_activity_display">displayActivity</string>
+    <string name="title_activity_camera">CameraActivity</string>
 
 </resources>

@@ -1,14 +1,17 @@
 package angelhack.nutritionfacts;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -38,18 +41,11 @@ public class SecondActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
-        URL = this.getIntent().getStringExtra(Intent.EXTRA_TEXT);
-        Log.e(tag, URL);
+        getLastImage();
+       // ActionBar actionBar = getActionBar();
+       // actionBar.setDisplayHomeAsUpEnabled(true);
         callWebService("");
 
-//        final Button btnSearch = (Button)findViewById(R.id.btnSearch);
-//        btnSearch.setOnClickListener(new Button.OnClickListener() {
-//            public void onClick(View v) {
-//                String query = "";
-//                callWebService(query);
-//            }
-//        });
     }
 
     @Override
@@ -64,6 +60,8 @@ public class SecondActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        finish();
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -99,10 +97,6 @@ public class SecondActivity extends ActionBarActivity {
             HttpPost request = new HttpPost(apiUrl);
             MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
             File file = new File(URL);
-
-          //  File file = new File(Environment.getExternalStorageDirectory(), "b.jpg");
-         //   File file = new File(Environment.getExternalStorageDirectory(), "/sdcard/recent.jpg");
-
             entityBuilder.addBinaryBody("file", file, ContentType.MULTIPART_FORM_DATA, file.getName());
             entityBuilder.addTextBody("apikey", "dd5e679c-3e9b-4ee6-ab4c-9db34501fb66");
             entityBuilder.addTextBody("mode", "document_scan");
@@ -125,11 +119,48 @@ public class SecondActivity extends ActionBarActivity {
 
             @Override
             protected void onPostExecute(String result){
-                Toast.makeText(SecondActivity.this, result, Toast.LENGTH_LONG).show();
+                ((TextView)findViewById(R.id.searchedResult)).setText(result);
+             //   Toast.makeText(SecondActivity.this, result, Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         }
 
+    private void getLastImage() {
 
+//        String[] projection = new String[]{
+//                MediaStore.Images.ImageColumns._ID,
+//                MediaStore.Images.ImageColumns.DATA,
+//                MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+//                MediaStore.Images.ImageColumns.DATE_TAKEN,
+//                MediaStore.Images.ImageColumns.MIME_TYPE
+//        };
+//        final Cursor cursor = getContentResolver()
+//                .query(MediaStore.Images.Media., projection, null,
+//                        null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+//
+//        // Put it in the image view
+//        if (cursor.moveToFirst()) {
+//            final ImageView imageView = (ImageView) findViewById(R.id.image);
+//            String imageLocation = cursor.getString(1);
+//            URL = imageLocation;
+//            Log.e(tag, "last photo path: "+imageLocation);
+//            File imageFile = new File(imageLocation);
+//            if (imageFile.exists()) {   // TODO: is there a better way to do this?
+//                Bitmap bm = BitmapFactory.decodeFile(imageLocation);
+//                imageView.setImageBitmap(bm);
+//            }
+//        }
+        File fileholder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File file = new File(fileholder, "last.jpg");
+        final ImageView imageView = (ImageView) findViewById(R.id.image);
+        String imageLocation = file.getPath();
+        URL = imageLocation;
+        Log.e(tag, "last photo path: " + imageLocation);
+        if (file.exists()) {   // TODO: is there a better way to do this?
+            Bitmap bm = BitmapFactory.decodeFile(imageLocation);
+            imageView.setImageBitmap(bm);
+        }
+
+    }
 
 }

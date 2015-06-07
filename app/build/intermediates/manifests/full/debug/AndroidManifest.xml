@@ -38,6 +38,14 @@
             android:name="angelhack.nutritionfacts.SecondActivity"
             android:label="@string/title_activity_second" >
         </activity>
+        <activity
+            android:name="angelhack.nutritionfacts.CameraActivity"
+            android:label="@string/title_activity_camera"
+            android:parentActivityName="angelhack.nutritionfacts.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="angelhack.nutritionfacts.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

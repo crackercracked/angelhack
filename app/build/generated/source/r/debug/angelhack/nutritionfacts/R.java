@@ -1324,7 +1324,7 @@ containing a value of this type.
         public static final int beginning=0x7f080013;
         public static final int btn_start=0x7f080041;
         public static final int btn_stop=0x7f080042;
-        public static final int capture=0x7f080043;
+        public static final int capture=0x7f080044;
         public static final int checkbox=0x7f080029;
         public static final int collapseActionView=0x7f080017;
         public static final int decor_content_parent=0x7f08002f;
@@ -1368,7 +1368,7 @@ containing a value of this type.
         public static final int showTitle=0x7f080011;
         public static final int split_action_bar=0x7f080007;
         public static final int submit_area=0x7f08003c;
-        public static final int surfaceView1=0x7f080044;
+        public static final int surfaceView1=0x7f080043;
         public static final int tabMode=0x7f08000b;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
@@ -1403,16 +1403,18 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030014;
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
-        public static final int activity_main=0x7f030017;
-        public static final int activity_second=0x7f030018;
-        public static final int fragment_main=0x7f030019;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
+        public static final int activity_camera=0x7f030017;
+        public static final int activity_main=0x7f030018;
+        public static final int activity_second=0x7f030019;
+        public static final int fragment_main=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
     }
     public static final class menu {
-        public static final int menu_display=0x7f0c0000;
-        public static final int menu_main=0x7f0c0001;
-        public static final int menu_post_request=0x7f0c0002;
-        public static final int menu_second=0x7f0c0003;
+        public static final int menu_camera=0x7f0c0000;
+        public static final int menu_display=0x7f0c0001;
+        public static final int menu_main=0x7f0c0002;
+        public static final int menu_post_request=0x7f0c0003;
+        public static final int menu_second=0x7f0c0004;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;
@@ -1435,13 +1437,12 @@ containing a value of this type.
         public static final int app_name=0x7f0a0011;
         public static final int btnTakePicture=0x7f0a0012;
         public static final int hello_world=0x7f0a0013;
-        public static final int title_activity_display=0x7f0a0014;
-        public static final int title_activity_post_request=0x7f0a0015;
-        public static final int title_activity_second=0x7f0a0016;
+        public static final int title_activity_camera=0x7f0a0014;
+        public static final int title_activity_display=0x7f0a0015;
+        public static final int title_activity_post_request=0x7f0a0016;
+        public static final int title_activity_second=0x7f0a0017;
     }
     public static final class style {
-        /**  Customize your theme here. 
-         */
         public static final int AppTheme=0x7f0b0000;
         public static final int Base_TextAppearance_AppCompat=0x7f0b0001;
         public static final int Base_TextAppearance_AppCompat_Body1=0x7f0b0002;
